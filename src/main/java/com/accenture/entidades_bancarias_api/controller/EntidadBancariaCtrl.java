@@ -42,6 +42,7 @@ public class EntidadBancariaCtrl {
      */
     @GetMapping("/obtener/{id}")
     public ResponseEntity<EntidadBancaria> getById(@PathVariable Long id)   {
+        log.info("Obteniendo por id");
         EntidadBancaria banco = entidadBancariaService.getBytId(id);
        if (banco == null) {
             throw new RecursoNoEncontradoException("Banco con ID " + id + " no encontrado");
