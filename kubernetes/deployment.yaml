@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: entidades-bancarias-api
+  namespace: entidades-bancarias-api
+  labels:
+    app: entidades-bancarias-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: entidades-bancarias-api
+  template:
+    metadata:
+      labels:
+        app: entidades-bancarias-api
+    spec:
+      containers:
+        - name: entidades-bancarias-api
+          image: rutarepo/entidades-bancarias-api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: jdbc:h2:mem:db
